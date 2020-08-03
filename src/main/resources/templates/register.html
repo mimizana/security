@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/main.css"/>
+    <style>
+        body {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="base :: navlinksfg"></div>
+<h2>New User Registration</h2>
+<form autocomplete="off"
+      th:action="@{/processregister}"
+      th:object="${user}" method="post">
+    First Name
+    <input type="text" id="firstName" placeholder="First Name"
+           th:field="*{firstName}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('firstName')}"
+              th:errors="*{firstName}"></span>
+    </strong></mark>
+    </br>
+    Last Name
+    <input type="text" id="lastName" placeholder="Last Name"
+           th:field="*{lastName}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('lastName')}"
+              th:errors="*{lastName}"></span>
+    </strong></mark>
+    </br>
+    Email
+    <input type="email" id="email" placeholder="Email"
+           th:field="*{email}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}"></span>
+    </strong></mark>
+    </br>
+    Username
+    <input type="text" id="username" placeholder="Username"
+           th:field="*{username}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}"></span>
+    </strong></mark>
+    </br>
+    Password
+    <input type="text" id="password" placeholder="Password"
+           th:field="*{password}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}"></span>
+    </strong></mark>
+    </br>
+    <br>
+    <button type="submit"class="btn btn-default">Submit</button>
+
+
+</form>
+
+
+<div th:replace="base ::footerfg"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
