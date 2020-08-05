@@ -10,7 +10,6 @@
 
 <div th:fragment="navlinksfg">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,17 +17,23 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
+                    Welcome, [[${#authentication.name}]]!
+                </li>
+                <li class="nav-item">
+                    <a sec:authorize="!isAuthenticated()" class="nav-link text-white" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/listSales}">List Sales</a>
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link" th:href="@{/admin}">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/addCustomer}">New Customer</a>
+                    <a class="nav-link" th:href="@{/secure}">Personal Info</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/addSales}">New Sale</a>
+                    <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a>
                 </li>
 
             </ul>

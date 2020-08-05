@@ -17,7 +17,7 @@
 <div th:replace="base :: navlinksfg"></div>
 <h2>New User Registration</h2>
 <form autocomplete="off"
-      th:action="@{/processregister}"
+      th:action="@{/register}"
       th:object="${user}" method="post">
     First Name
     <input type="text" id="firstName" placeholder="First Name"
